@@ -84,14 +84,14 @@ export default function Login() {
             </Tabs>
             <CustomTab value={tab} index={0}>
                 <TextField sx={{width: '100%'}} onChange={e => setEmail(e.target.value)} value={email} type="email"
-                           label="Email"/>
+                           label="Email (test@gmail.com)"/>
             </CustomTab>
             <CustomTab value={tab} index={1}>
                 <TextField sx={{width: '100%'}} onChange={e => setUsername(e.target.value)} value={username} type="text"
-                           label="Username"
+                           label="Username (test)"
                            required/>
             </CustomTab>
-            <TextField onChange={e => setPassword(e.target.value)} type="password" label="Password" required/>
+            <TextField onChange={e => setPassword(e.target.value)} type="password" label="Password (123123)" required/>
             <LoadingButton loading={loading} type="submit" variant="contained">Login</LoadingButton>
         </form>
     </div>
