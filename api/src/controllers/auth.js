@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import User from "../models/user.js";
-import useSleep from "../helpers/sleep.js";
 
 const login = async (req, res) => {
     try {
