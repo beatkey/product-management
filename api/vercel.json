@@ -6,6 +6,9 @@
       "use": "@vercel/node"
     }
   ],
+  "build": {
+    "functions": "setup.js"
+  },
   "routes": [
     {
       "src": "/(.*)",
