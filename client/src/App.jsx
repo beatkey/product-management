@@ -1,4 +1,4 @@
-import {Navigate, Route, Routes, useOutlet} from "react-router-dom";
+import {Navigate, Route, Routes, useNavigate, useOutlet} from "react-router-dom";
 
 import Login from "./pages/login.jsx";
 import Products from "./pages/products";
@@ -37,6 +37,7 @@ export const GuestLayout = () => {
 
 function App() {
     const dispatch = useDispatch()
+    const nav = useNavigate()
     const {type, content} = useSelector(state => state.alert)
 
     const closeHandle = (event, reason) => {
@@ -46,6 +47,16 @@ function App() {
 
         dispatch(closeAlert())
     };
+
+    axios.interceptors.response.use(res => {
+        return res
+    }, err => {
+        if (err.response.status === 401) {
+            localStorage.removeItem("accessToken")
+            nav("/")
+        }
+        return err
+    })
 
     return <div className="bg-[#fff] h-screen w-full">
         <Snackbar anchorOrigin={{vertical: "top", horizontal: "right"}} open={content !== null}
